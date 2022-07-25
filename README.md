@@ -1,6 +1,8 @@
 # memorizer-backend
 This is the backend of Memorizer
 
+# To create sql_dump.sql file use
+``` mysqldump -u username -p databasename > filename.sql```
 
 ## To run the application 
 1. First create .env file in root of your project with below values
