@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch MemorizerBackendApplication",
+            "request": "launch",
+            "mainClass": "com.example.memorizerbackend.MemorizerBackendApplication",
+            "projectName": "memorizer-backend"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "webRoot": "${workspaceFolder}/ro"
+        }
+    ]
+}
