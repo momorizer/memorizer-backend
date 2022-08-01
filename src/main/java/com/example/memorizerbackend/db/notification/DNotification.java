@@ -1,8 +1,6 @@
 package com.example.memorizerbackend.db.notification;
 
-
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
@@ -29,11 +27,11 @@ public class DNotification {
 
     private Integer NotificationType;
 
-    public DNotification(){
+    public DNotification() {
 
     }
 
-    public DNotification(Integer UserId){
+    public DNotification(Integer UserId) {
         this.UserId = UserId;
     }
 
