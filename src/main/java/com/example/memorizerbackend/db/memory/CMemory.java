@@ -3,7 +3,6 @@ package com.example.memorizerbackend.db.memory;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Memory {
+public class CMemory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer MemoryId;
@@ -36,11 +35,11 @@ public class Memory {
     private Timestamp UpdateTime;
 
     //Default constructor
-    public Memory(){
+    public CMemory(){
 
     }
 
-    public Memory(Integer CreatedBy,Integer CreatedFor,String Title){
+    public CMemory(Integer CreatedBy, Integer CreatedFor, String Title){
         this.CreatedBy = CreatedBy;
         this.CreatedFor = CreatedFor;
         this.Title = Title;

@@ -1,7 +1,6 @@
 package com.example.memorizerbackend.db.user;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -9,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.ColumnDefault;
@@ -18,7 +15,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class AUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer UserId;
@@ -39,6 +36,13 @@ public class User {
 
     private String ProfilePic;
 
+    private String Bio;
+
+    private Boolean UserBasedNotificationEnabled;
+
+    private Boolean MemoryBasedNotificationEnabled;
+
+
     @CreationTimestamp
     private Timestamp CreateTime;
 
@@ -50,7 +54,7 @@ public class User {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date Dob;
 
-    public User(String FirstName, String LastName, String Email, String ContactNo, String Password) {
+    public AUser(String FirstName, String LastName, String Email, String ContactNo, String Password) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Email = Email;
@@ -59,7 +63,7 @@ public class User {
     }
 
     // Default Constructor
-    public User() {
+    public AUser() {
     };
 
     public Integer getUserId() {
@@ -156,5 +160,30 @@ public class User {
 
     public void setCreateTime(Timestamp createTime) {
         CreateTime = createTime;
+    }
+
+
+    public String getBio() {
+        return Bio;
+    }
+
+    public void setBio(String bio) {
+        Bio = bio;
+    }
+
+    public Boolean getUserBasedNotificationEnabled() {
+        return UserBasedNotificationEnabled;
+    }
+
+    public void setUserBasedNotificationEnabled(Boolean userBasedNotificationEnabled) {
+        UserBasedNotificationEnabled = userBasedNotificationEnabled;
+    }
+
+    public Boolean getMemoryBasedNotificationEnabled() {
+        return MemoryBasedNotificationEnabled;
+    }
+
+    public void setMemoryBasedNotificationEnabled(Boolean memoryBasedNotificationEnabled) {
+        MemoryBasedNotificationEnabled = memoryBasedNotificationEnabled;
     }
 }
