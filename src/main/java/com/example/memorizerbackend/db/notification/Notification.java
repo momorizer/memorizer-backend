@@ -4,34 +4,35 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class DNotification {
+public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false,unique = true)
     private Integer NotificationId;
 
     @CreationTimestamp
     private Timestamp CreateTime;
 
+    @Column(nullable = false)
     private Integer UserId;
 
     private String Content;
 
+    @Column(columnDefinition = "tinyint(1) default 0")
     private boolean IsSeen;
 
+    @Column(columnDefinition = "int default 1")
     private Integer NotificationType;
 
-    public DNotification() {
+    public Notification() {
 
     }
 
-    public DNotification(Integer UserId) {
+    public Notification(Integer UserId) {
         this.UserId = UserId;
     }
 

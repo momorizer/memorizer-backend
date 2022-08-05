@@ -18,7 +18,7 @@ USE `memorizer`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `AUser`
+-- Table structure for table `User`
 --
 
 DROP TABLE IF EXISTS `AUser`;
@@ -48,7 +48,7 @@ CREATE TABLE `AUser` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `AUser`
+-- Dumping data for table `User`
 --
 
 LOCK TABLES `AUser` WRITE;
@@ -58,7 +58,7 @@ INSERT INTO `AUser` VALUES ('2022-07-05 12:16:16','2022-07-05 12:16:16',1,'Shiva
 UNLOCK TABLES;
 
 --
--- Table structure for table `CMemory`
+-- Table structure for table `Memory`
 --
 
 DROP TABLE IF EXISTS `CMemory`;
@@ -84,7 +84,7 @@ CREATE TABLE `CMemory` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `CMemory`
+-- Dumping data for table `Memory`
 --
 
 LOCK TABLES `CMemory` WRITE;
@@ -94,7 +94,7 @@ INSERT INTO `CMemory` VALUES ('2022-07-05 12:38:54','2022-07-05 12:38:54',1,1,2,
 UNLOCK TABLES;
 
 --
--- Table structure for table `DNotification`
+-- Table structure for table `Notification`
 --
 
 DROP TABLE IF EXISTS `DNotification`;
@@ -115,7 +115,7 @@ CREATE TABLE `DNotification` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `DNotification`
+-- Dumping data for table `Notification`
 --
 
 LOCK TABLES `DNotification` WRITE;

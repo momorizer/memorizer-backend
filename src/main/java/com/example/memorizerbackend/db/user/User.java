@@ -3,43 +3,52 @@ package com.example.memorizerbackend.db.user;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class AUser {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false,unique = true)
     private Integer UserId;
 
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+//    private ContactDetail contactDetail;
+
+    //TODO: Add foreign keys
+    @Column(nullable = false)
     private String FirstName;
 
+    @Column(nullable = false)
     private String LastName;
 
+    @Column(nullable = false, unique = true)
     private String Email;
 
+    @Column(nullable = false, unique = true)
     private String ContactNo;
 
+    @Column(nullable = false)
     private String Password;
 
+    @Column(columnDefinition = "tinyint(1) default 0")
     private boolean EmailVerified;
 
+    @Column(columnDefinition = "tinyint(1) default 0")
     private boolean DefaultMemoryPrivacy;
 
     private String ProfilePic;
 
     private String Bio;
 
+    @Column(columnDefinition = "tinyint(1) default 1")
     private Boolean UserBasedNotificationEnabled;
 
+    @Column(columnDefinition = "tinyint(1) default 1")
     private Boolean MemoryBasedNotificationEnabled;
 
 
@@ -50,11 +59,12 @@ public class AUser {
     @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp UpdateTime;
 
-    @ColumnDefault("")
+//    @ColumnDefault("")
     @JsonFormat(pattern = "yyyy-MM-dd")
+    //TODO: Resolve defualt dob issue
     private Date Dob;
 
-    public AUser(String FirstName, String LastName, String Email, String ContactNo, String Password) {
+    public User(String FirstName, String LastName, String Email, String ContactNo, String Password) {
         this.FirstName = FirstName;
         this.LastName = LastName;
         this.Email = Email;
@@ -63,7 +73,7 @@ public class AUser {
     }
 
     // Default Constructor
-    public AUser() {
+    public User() {
     };
 
     public Integer getUserId() {

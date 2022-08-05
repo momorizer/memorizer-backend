@@ -5,27 +5,32 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class CMemory {
+public class Memory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false,unique = true)
     private Integer MemoryId;
 
+    @Column(nullable = false)
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = )
     private Integer CreatedBy;
 
+    @Column(nullable = false)
     private Integer CreatedFor;
 
+    @Column(nullable = false)
     private String Title;
 
     private String Content;
 
     private String Photo;
 
+    @Column(columnDefinition = "tinyint(1) default 0")
     private boolean Privacy;
 
     @CreationTimestamp
@@ -35,11 +40,11 @@ public class CMemory {
     private Timestamp UpdateTime;
 
     //Default constructor
-    public CMemory(){
+    public Memory(){
 
     }
 
-    public CMemory(Integer CreatedBy, Integer CreatedFor, String Title){
+    public Memory(Integer CreatedBy, Integer CreatedFor, String Title){
         this.CreatedBy = CreatedBy;
         this.CreatedFor = CreatedFor;
         this.Title = Title;

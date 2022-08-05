@@ -6,20 +6,20 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping(path = "/notification")
-public class DNotificationController {
+public class NotificationController {
 
     @Autowired
 
-    private  DNotificationRepository DNotificationRespository;
+    private NotificationRepository DNotificationRespository;
 
     @PostMapping(path = "/add")
-    public @ResponseBody String addNewNotification(@RequestBody DNotification notification){
+    public @ResponseBody String addNewNotification(@RequestBody Notification notification){
         DNotificationRespository.save(notification);
         return "Notification Saved";
     }
 
     @GetMapping(path = "/all")
-    public @ResponseBody Iterable <DNotification> getAllNotification(){
+    public @ResponseBody Iterable <Notification> getAllNotification(){
         return DNotificationRespository.findAll();
     }
 }
