@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Authenticator {
     @Autowired
-    UserRepository userRepository;
+    UserRepository AUserRepository;
 
     @PostMapping(path = "register")
     public ResponseEntity<?> RegisterUser(@RequestBody User usr){
@@ -20,7 +20,7 @@ public class Authenticator {
         PEncoder encoder = new PEncoder(10);
         String EncodedPassword = encoder.passwordEncoder().encode(Password);
         usr.setPassword(EncodedPassword);
-        userRepository.save(usr);
+        AUserRepository.save(usr);
         return ResponseEntity.status(200).body("User added");
     };
 }
