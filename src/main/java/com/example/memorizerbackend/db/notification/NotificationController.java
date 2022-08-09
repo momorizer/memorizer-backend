@@ -14,6 +14,8 @@ public class NotificationController {
 
     @PostMapping(path = "/add")
     public @ResponseBody String addNewNotification(@RequestBody Notification notification){
+        System.out.println(notification.getContent());
+        System.out.println(notification.getUserId());
         DNotificationRespository.save(notification);
         return "Notification Saved";
     }

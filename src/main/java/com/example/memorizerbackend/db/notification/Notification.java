@@ -1,7 +1,9 @@
 package com.example.memorizerbackend.db.notification;
 
+import com.example.memorizerbackend.db.user.User;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.sql.SQLOutput;
 import java.sql.Timestamp;
 
 import javax.persistence.*;
@@ -17,8 +19,10 @@ public class Notification {
     @CreationTimestamp
     private Timestamp CreateTime;
 
-    @Column(nullable = false)
-    private Integer UserId;
+    //TODO: resolve output
+    @OneToOne
+    @JoinColumn(name = "UserId",nullable = false)
+    private User UserId;
 
     private String Content;
 
@@ -29,10 +33,11 @@ public class Notification {
     private Integer NotificationType;
 
     public Notification() {
-
+        System.out.println("Inside default notification constructor");
     }
 
-    public Notification(Integer UserId) {
+    public Notification(User UserId) {
+        System.out.println("Inside notification constructor"+UserId.getUserId());
         this.UserId = UserId;
     }
 
@@ -44,11 +49,11 @@ public class Notification {
         CreateTime = createTime;
     }
 
-    public Integer getUserId() {
+    public User getUserId() {
         return UserId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(User userId) {
         UserId = userId;
     }
 
