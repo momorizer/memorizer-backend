@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 import javax.persistence.CascadeType;
 
 import com.example.memorizerbackend.db.user.User;
@@ -28,69 +26,76 @@ public class Member{
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-     private Integer MemberId;
+     private Integer memberId;
 
-    @OneToOne
-     private Group GroupId;
+     @ManyToOne
+     private Group groupId;
 
-    @OneToOne
-     private User UserId;
+     @OneToOne
+     private User userId;
 
      @CreationTimestamp
-     private Timestamp CreatedTime;
+     private Timestamp createdTime;
 
-     private boolean GroupBasedNotfication;
+     private boolean groupBasedNotfication;
+
+     private boolean admin;
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 
     //default constructor
     public Member() {
     }
 
-    public Member(Integer MemberId, Group GroupId, User UserId, Timestamp CreatedTime, boolean GroupBasedNotfication) {
-        this.MemberId = MemberId;
-        this.GroupId = GroupId;
-        this.UserId = UserId;
-        this.CreatedTime = CreatedTime;
-        this.GroupBasedNotfication = GroupBasedNotfication;
+    public Member(Group groupId, User userId) {
+        this.groupId = groupId;
+        this.userId = userId;
     }
 
     public Integer getMemberId() {
-        return this.MemberId;
+        return this.memberId;
     }
 
     public void setMemberId(Integer MemberId) {
-        this.MemberId = MemberId;
+        this.memberId = MemberId;
     }
 
     public Group getGroupId() {
-        return this.GroupId;
+        return this.groupId;
     }
 
     public void setGroupId(Group GroupId) {
-        this.GroupId = GroupId;
+        this.groupId = GroupId;
     }
 
     public User getUserId() {
-        return this.UserId;
+        return this.userId;
     }
 
     public void setUserId(User UserId) {
-        this.UserId = UserId;
+        this.userId = UserId;
     }
 
     public Timestamp getCreatedTime() {
-        return this.CreatedTime;
+        return this.createdTime;
     }
 
     public void setCreatedTime(Timestamp CreatedTime) {
-        this.CreatedTime = CreatedTime;
+        this.createdTime = CreatedTime;
     }
 
 	public boolean isGroupBasedNotfication() {
-		return this.GroupBasedNotfication;
+		return this.groupBasedNotfication;
 	}
 
 	public void setGroupBasedNotfication(boolean GroupBasedNotfication) {
-		this.GroupBasedNotfication = GroupBasedNotfication;
+		this.groupBasedNotfication = GroupBasedNotfication;
 	}
 
 }

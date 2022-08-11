@@ -12,8 +12,8 @@ public class MemberController {
     private MemberRepository MemberRepository;
 
     @PostMapping(path="/add") // Map ONLY POST Requests
-    public @ResponseBody String addNewMember (@RequestBody Member admin) {
-        MemberRepository.save(admin);
+    public @ResponseBody String addNewMember (@RequestBody Member member) {
+        MemberRepository.save(member);
         return "Saved";
     }
 

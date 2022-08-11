@@ -4,13 +4,11 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 
 import com.example.memorizerbackend.db.user.User;
@@ -27,60 +25,60 @@ public class Request{
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-     private Integer RequestId;
+     private Integer requestId;
 
-     @OneToOne
-     private Group GroupId;
+      @OneToOne
+//     @JoinColumn(name="groupId" , nullable = false )
+     private Group groupId;
 
-     @OneToOne
-     private User UserId;
+      @OneToOne
+//     @JoinColumn( name="userId" , nullable=false)
+     private User userId;
 
      @CreationTimestamp
-     private Timestamp CreatedTime;
+     private Timestamp createdTime;
 
     //default constructor
     public Request() {
     }
 
-    public Request(Integer RequestId, Group GroupId, User UserId, Timestamp CreatedTime) {
-        this.RequestId = RequestId;
-        this.GroupId = GroupId;
-        this.UserId = UserId;
-        this.CreatedTime = CreatedTime;
+    public Request( Group GroupId, User UserId) {
+        this.groupId = GroupId;
+        this.userId = UserId;
     }
 
 
 
     public Integer getRequestId() {
-        return this.RequestId;
+        return this.requestId;
     }
 
     public void setRequestId(Integer RequestId) {
-        this.RequestId = RequestId;
+        this.requestId = RequestId;
     }
 
     public Group getGroupId() {
-        return this.GroupId;
+        return this.groupId;
     }
 
     public void setGroupId(Group GroupId) {
-        this.GroupId = GroupId;
+        this.groupId = GroupId;
     }
 
     public User getUserId() {
-        return this.UserId;
+        return this.userId;
     }
 
     public void setUserId(User UserId) {
-        this.UserId = UserId;
+        this.userId = UserId;
     }
 
     public Timestamp getCreatedTime() {
-        return this.CreatedTime;
+        return this.createdTime;
     }
 
     public void setCreatedTime(Timestamp CreatedTime) {
-        this.CreatedTime = CreatedTime;
+        this.createdTime = CreatedTime;
     }
 
 }

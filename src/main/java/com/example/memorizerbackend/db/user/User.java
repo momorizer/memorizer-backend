@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 
 import javax.persistence.*;
 
+//import com.example.memorizerbackend.db.group.Group;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,36 +15,39 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,unique = true)
-    private Integer UserId;
+    private Integer userId;
 
 //    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 //    private ContactDetail contactDetail;
 
     //TODO: Add foreign keys
     @Column(nullable = false)
-    private String FirstName;
+    private String firstName;
 
     @Column(nullable = false)
-    private String LastName;
+    private String lastName;
 
     @Column(nullable = false, unique = true)
-    private String Email;
+    private String email;
 
     @Column(nullable = false, unique = true)
-    private String ContactNo;
+    private String contactNo;
 
     @Column(nullable = false)
-    private String Password;
+    private String password;
 
     @Column(columnDefinition = "tinyint(1) default 0")
-    private boolean EmailVerified;
+    private boolean emailVerified;
 
     @Column(columnDefinition = "tinyint(1) default 0")
-    private boolean DefaultMemoryPrivacy;
+    private boolean defaultMemoryPrivacy;
 
-    private String ProfilePic;
+    private String profilePic;
 
-    private String Bio;
+    private String bio;
+
+    // @OneToMany
+    // private List<Group> groups;
 
     @Column(columnDefinition = "tinyint(1) default 1")
     private Boolean UserBasedNotificationEnabled;
@@ -65,79 +69,78 @@ public class User {
     private Date Dob;
 
     public User(String FirstName, String LastName, String Email, String ContactNo, String Password) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Email = Email;
-        this.ContactNo = ContactNo;
-        this.Password = Password;
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.email = Email;
+        this.contactNo = ContactNo;
+        this.password = Password;
     }
 
     // Default Constructor
     public User() {
     };
-
     public Integer getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(Integer userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getContactNo() {
-        return ContactNo;
+        return contactNo;
     }
 
     public void setContactNo(String contactNo) {
-        ContactNo = contactNo;
+        this.contactNo = contactNo;
     }
 
     public String getProfilePic() {
-        return ProfilePic;
+        return profilePic;
     }
 
     public void setProfilePic(String profilePic) {
-        ProfilePic = profilePic;
+        this.profilePic = profilePic;
     }
 
     public boolean getEmailVerified() {
-        return EmailVerified;
+        return emailVerified;
     }
 
     public void setEmailVerified(boolean emailVerified) {
-        EmailVerified = emailVerified;
+        this.emailVerified = emailVerified;
     }
 
     public boolean getDefaultMemoryPrivacy() {
-        return DefaultMemoryPrivacy;
+        return defaultMemoryPrivacy;
     }
 
     public void setDefaultMemoryPrivacy(boolean defaultMemoryPrivacy) {
-        DefaultMemoryPrivacy = defaultMemoryPrivacy;
+        this.defaultMemoryPrivacy = defaultMemoryPrivacy;
     }
 
     public Date getDob() {
@@ -149,11 +152,11 @@ public class User {
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public Timestamp getUpdateTime() {
@@ -174,11 +177,11 @@ public class User {
 
 
     public String getBio() {
-        return Bio;
+        return bio;
     }
 
     public void setBio(String bio) {
-        Bio = bio;
+        this.bio = bio;
     }
 
     public Boolean getUserBasedNotificationEnabled() {

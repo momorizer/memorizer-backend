@@ -7,120 +7,119 @@ import java.sql.Timestamp;
 
 import javax.persistence.*;
 
+import com.example.memorizerbackend.db.user.User;
+
 @Entity
 public class Memory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,unique = true)
-    private Integer MemoryId;
+    private Integer memoryId;
+
+    @ManyToOne
+    private User createdBy;
+
+    @ManyToOne
+    private User createdFor;
 
     @Column(nullable = false)
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = )
-    private Integer CreatedBy;
+    private String title;
 
-    @Column(nullable = false)
-    private Integer CreatedFor;
+    private String content;
 
-    @Column(nullable = false)
-    private String Title;
-
-    private String Content;
-
-    private String Photo;
+    private String photo;
 
     @Column(columnDefinition = "tinyint(1) default 0")
-    private boolean Privacy;
+    private boolean privacy;
 
     @CreationTimestamp
-    private Timestamp CreateTime;
+    private Timestamp createTime;
 
     @UpdateTimestamp
-    private Timestamp UpdateTime;
+    private Timestamp updateTime;
 
     //Default constructor
     public Memory(){
 
     }
 
-    public Memory(Integer CreatedBy, Integer CreatedFor, String Title){
-        this.CreatedBy = CreatedBy;
-        this.CreatedFor = CreatedFor;
-        this.Title = Title;
+    public Memory(User CreatedBy, User CreatedFor, String Title){
+        this.createdBy = CreatedBy;
+        this.createdFor = CreatedFor;
+        this.title = Title;
     }
 
 
     public Integer getMemoryId() {
-        return MemoryId;
+        return memoryId;
     }
 
     public void setMemoryId(Integer memoryId) {
-        MemoryId = memoryId;
+        this.memoryId = memoryId;
     }
 
-    public Integer getCreatedBy() {
-        return CreatedBy;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
-        CreatedBy = createdBy;
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Integer getCreatedFor() {
-        return CreatedFor;
+    public User getCreatedFor() {
+        return createdFor;
     }
 
-    public void setCreatedFor(Integer createdFor) {
-        CreatedFor = createdFor;
+    public void setCreatedFor(User createdFor) {
+        this.createdFor = createdFor;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public String getPhoto() {
-        return Photo;
+        return photo;
     }
 
     public void setPhoto(String photo) {
-        Photo = photo;
+        this.photo = photo;
     }
 
     public boolean getPrivacy() {
-        return Privacy;
+        return privacy;
     }
 
     public void setPrivacy(boolean privacy) {
-        Privacy = privacy;
+        this.privacy = privacy;
     }
 
     public Timestamp getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(Timestamp createTime) {
-        CreateTime = createTime;
+        this.createTime = createTime;
     }
 
     public Timestamp getUpdateTime() {
-        return UpdateTime;
+        return updateTime;
     }
 
     public void setUpdateTime(Timestamp updateTime) {
-        UpdateTime = updateTime;
+        this.updateTime = updateTime;
     }
 
 }

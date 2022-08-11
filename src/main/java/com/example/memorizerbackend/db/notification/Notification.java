@@ -6,81 +6,88 @@ import java.sql.Timestamp;
 
 import javax.persistence.*;
 
+import com.example.memorizerbackend.db.user.User;
+
 @Entity
 public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,unique = true)
-    private Integer NotificationId;
+    private Integer notificationId;
 
     @CreationTimestamp
-    private Timestamp CreateTime;
+    private Timestamp createTime;
 
-    @Column(nullable = false)
-    private Integer UserId;
+    @ManyToOne
+    @JoinColumn(name = "UserId")
+    private User user;
 
-    private String Content;
+    private String content;
 
     @Column(columnDefinition = "tinyint(1) default 0")
-    private boolean IsSeen;
+    private boolean isSeen;
 
     @Column(columnDefinition = "int default 1")
-    private Integer NotificationType;
+    private Integer notificationType;
 
-    public Notification() {
-
+    public Notification(){
     }
 
-    public Notification(Integer UserId) {
-        this.UserId = UserId;
+    public Notification(User user, String content) {
+        this.user = user;
+        this.content = content;
+    }
+
+    public Notification(User user) {
+        this.user = user;
     }
 
     public Timestamp getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(Timestamp createTime) {
-        CreateTime = createTime;
+        this.createTime = createTime;
     }
 
-    public Integer getUserId() {
-        return UserId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        UserId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public boolean isSeen() {
-        return IsSeen;
+        return isSeen;
     }
 
     public void setSeen(boolean seen) {
-        IsSeen = seen;
+        isSeen = seen;
     }
 
     public Integer getNotificationType() {
-        return NotificationType;
+        return notificationType;
     }
 
     public void setNotificationType(Integer notificationType) {
-        NotificationType = notificationType;
+        this.notificationType = notificationType;
     }
 
     public Integer getNotificationId() {
-        return NotificationId;
+        return notificationId;
     }
 
     public void setNotificationId(Integer notificationId) {
-        NotificationId = notificationId;
+        this.notificationId = notificationId;
     }
 }
