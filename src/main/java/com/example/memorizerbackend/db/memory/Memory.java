@@ -3,120 +3,127 @@ package com.example.memorizerbackend.db.memory;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.websocket.OnClose;
+
+import com.example.memorizerbackend.db.user.User;
 
 @Entity
 public class Memory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer MemoryId;
+    @Column(nullable = false,unique = true)
+    private Integer memoryId;
 
-    private Integer CreatedBy;
+    @ManyToOne
+    private User createdBy;
 
-    private Integer CreatedFor;
+    @ManyToOne
+    private User createdFor;
 
-    private String Title;
+    @Column(nullable = false)
+    private String title;
 
-    private String Content;
+    @Column(columnDefinition = "BLOB")
+    private String content;
 
-    private String Photo;
+    @Column(columnDefinition = "BLOB")
+    private String photo;
 
-    private boolean Privacy;
+    @Column(columnDefinition = "tinyint(1) default 0")
+    private boolean privacy;
 
     @CreationTimestamp
-    private Timestamp CreateTime;
+    private Timestamp createTime;
 
     @UpdateTimestamp
-    private Timestamp UpdateTime;
+    @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
+    private Timestamp updateTime;
 
     //Default constructor
     public Memory(){
 
     }
 
-    public Memory(Integer CreatedBy,Integer CreatedFor,String Title){
-        this.CreatedBy = CreatedBy;
-        this.CreatedFor = CreatedFor;
-        this.Title = Title;
+    public Memory(User CreatedBy, User CreatedFor, String Title){
+        this.createdBy = CreatedBy;
+        this.createdFor = CreatedFor;
+        this.title = Title;
     }
 
 
     public Integer getMemoryId() {
-        return MemoryId;
+        return memoryId;
     }
 
     public void setMemoryId(Integer memoryId) {
-        MemoryId = memoryId;
+        this.memoryId = memoryId;
     }
 
-    public Integer getCreatedBy() {
-        return CreatedBy;
+    public User getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
-        CreatedBy = createdBy;
+    public void setCreatedBy(User createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Integer getCreatedFor() {
-        return CreatedFor;
+    public User getCreatedFor() {
+        return createdFor;
     }
 
-    public void setCreatedFor(Integer createdFor) {
-        CreatedFor = createdFor;
+    public void setCreatedFor(User createdFor) {
+        this.createdFor = createdFor;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
 
     public String getPhoto() {
-        return Photo;
+        return photo;
     }
 
     public void setPhoto(String photo) {
-        Photo = photo;
+        this.photo = photo;
     }
 
     public boolean getPrivacy() {
-        return Privacy;
+        return privacy;
     }
 
     public void setPrivacy(boolean privacy) {
-        Privacy = privacy;
+        this.privacy = privacy;
     }
 
     public Timestamp getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(Timestamp createTime) {
-        CreateTime = createTime;
+        this.createTime = createTime;
     }
 
     public Timestamp getUpdateTime() {
-        return UpdateTime;
+        return updateTime;
     }
 
     public void setUpdateTime(Timestamp updateTime) {
-        UpdateTime = updateTime;
+        this.updateTime = updateTime;
     }
 
 }

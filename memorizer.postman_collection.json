@@ -9,102 +9,340 @@
 			"name": "DB",
 			"item": [
 				{
-					"name": "Add user",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"firstName\":\"Amit\",\n    \"lastName\":\"Singh\",\n    \"email\":\"amitsingh@yahoo.com\",\n    \"contactNo\":\"8021857933\",\n    \"password\":\"welcome11\",\n    \"dob\":\"1999-06-16\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "User",
+					"item": [
+						{
+							"name": "Add user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\":\"Shivang\",\n    \"lastName\":\"Mangal\",\n    \"email\":\"shivang@yahoo.com\",\n    \"contactNo\":\"9981057904\",\n    \"password\":\"welcome11\",\n    \"dob\":\"1999-06-16\",\n    \"bio\":\"Hi my name is SHIVANG\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"add"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "http://localhost:8080/user/add",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"user",
-								"add"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get User",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/user/all",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"user",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add Memory",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"createdBy\":\"7\",\n    \"createdFor\":\"1\",\n    \"title\":\"New memory-2\",\n    \"content\":\"Hi this is a new memory\",\n    \"photo\":\"djvlnwdvn\",\n    \"privacy\":\"false\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Get User",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"all"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/memory/add",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"memory",
-								"add"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Get Memory",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8080/memory/all",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"memory",
-								"all"
-							]
+					"name": "Memory",
+					"item": [
+						{
+							"name": "Add Memory",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"createdBy\":{\n        \"userId\":2\n    },\n    \"createdFor\":{\n        \"userId\":1\n    },\n    \"title\":\"New memory-4\",\n    \"content\":\"Hi this is a new memory\",\n    \"photo\":\"djvlnwdvn\",\n    \"privacy\":\"false\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/memory/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"memory",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Memory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/memory/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"memory",
+										"all"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Notification",
+					"item": [
+						{
+							"name": "Get Notification",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/notification/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"notification",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add notification",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"user\":{\n        \"userId\":1\n    },\n    \"content\":\"This is memory N\",\n    \"notificationType\":2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/notification/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"notification",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Group",
+					"item": [
+						{
+							"name": "Get all groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/group/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"group",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"groupName\":\"NIT Trichy\",\n    \"superAdmin\":{\n        \"userId\":2\n    },\n    \"groupDescription\":\"Trichy\",\n    \"groupIcon\":\"7t67gyubh6rdf7ygui\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/group/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"group",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Member",
+					"item": [
+						{
+							"name": "Get all members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/member/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"member",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Member",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"groupId\":{\n        \"groupId\":5\n    },\n    \"userId\":{\n        \"userId\":2\n    },\n    \"isAdmin\":true\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/member/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"member",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Request",
+					"item": [
+						{
+							"name": "Get all requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/request/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"request",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userId\":{\n        \"userId\":1\n    },\n    \"groupId\":{\n        \"groupId\":5\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/request/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"request",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},

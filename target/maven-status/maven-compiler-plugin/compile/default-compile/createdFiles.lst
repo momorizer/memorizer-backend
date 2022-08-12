@@ -1,9 +1,0 @@
-com/example/memorizerbackend/rest/Authenticator.class
-com/example/memorizerbackend/utilities/PEncoder.class
-com/example/memorizerbackend/MemorizerBackendApplication.class
-com/example/memorizerbackend/db/memory/Memory.class
-com/example/memorizerbackend/db/memory/MemoryRepository.class
-com/example/memorizerbackend/db/user/User.class
-com/example/memorizerbackend/db/memory/MemoryController.class
-com/example/memorizerbackend/db/user/UserController.class
-com/example/memorizerbackend/db/user/UserRepository.class

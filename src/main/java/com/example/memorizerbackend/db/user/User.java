@@ -1,19 +1,12 @@
 package com.example.memorizerbackend.db.user;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 
+//import com.example.memorizerbackend.db.group.Group;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,140 +14,183 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer UserId;
+    @Column(nullable = false,unique = true)
+    private Integer userId;
 
-    private String FirstName;
+    @Column(nullable = false)
+    private String firstName;
 
-    private String LastName;
+    @Column(nullable = false)
+    private String lastName;
 
-    private String Email;
+    @Column(nullable = false, unique = true)
+    private String email;
 
-    private String ContactNo;
+    @Column(nullable = false, unique = true)
+    private String contactNo;
 
-    private String Password;
+    @Column(nullable = false)
+    private String password;
 
-    private boolean EmailVerified;
+    @Column(columnDefinition = "tinyint(1) default 0")
+    private boolean emailVerified;
 
-    private boolean DefaultMemoryPrivacy;
+    @Column(columnDefinition = "tinyint(1) default 0")
+    private boolean defaultMemoryPrivacy;
 
-    private String ProfilePic;
+    @Column(columnDefinition = "BLOB")
+    private String profilePic;
+
+    @Column(columnDefinition = "BLOB")
+    private String bio;
+
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private Boolean userBasedNotificationEnabled;
+
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private Boolean memoryBasedNotificationEnabled;
+
 
     @CreationTimestamp
-    private Timestamp CreateTime;
+    private Timestamp createTime;
 
     @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
-    private Timestamp UpdateTime;
+    private Timestamp updateTime;
 
-    @ColumnDefault("")
+    //TODO: Resolve default dob issue
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date Dob;
+    private Date dob;
 
     public User(String FirstName, String LastName, String Email, String ContactNo, String Password) {
-        this.FirstName = FirstName;
-        this.LastName = LastName;
-        this.Email = Email;
-        this.ContactNo = ContactNo;
-        this.Password = Password;
+        this.firstName = FirstName;
+        this.lastName = LastName;
+        this.email = Email;
+        this.contactNo = ContactNo;
+        this.password = Password;
     }
 
     // Default Constructor
     public User() {
     };
-
     public Integer getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(Integer userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getContactNo() {
-        return ContactNo;
+        return contactNo;
     }
 
     public void setContactNo(String contactNo) {
-        ContactNo = contactNo;
+        this.contactNo = contactNo;
     }
 
     public String getProfilePic() {
-        return ProfilePic;
+        return profilePic;
     }
 
     public void setProfilePic(String profilePic) {
-        ProfilePic = profilePic;
+        this.profilePic = profilePic;
     }
 
     public boolean getEmailVerified() {
-        return EmailVerified;
+        return emailVerified;
     }
 
     public void setEmailVerified(boolean emailVerified) {
-        EmailVerified = emailVerified;
+        this.emailVerified = emailVerified;
     }
 
     public boolean getDefaultMemoryPrivacy() {
-        return DefaultMemoryPrivacy;
+        return defaultMemoryPrivacy;
     }
 
     public void setDefaultMemoryPrivacy(boolean defaultMemoryPrivacy) {
-        DefaultMemoryPrivacy = defaultMemoryPrivacy;
+        this.defaultMemoryPrivacy = defaultMemoryPrivacy;
     }
 
     public Date getDob() {
-        return Dob;
+        return dob;
     }
 
     public void setDob(Date dob) {
-        Dob = dob;
+        dob = dob;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public Timestamp getUpdateTime() {
-        return UpdateTime;
+        return updateTime;
     }
 
     public void setUpdateTime(Timestamp updateTime) {
-        UpdateTime = updateTime;
+        updateTime = updateTime;
     }
 
     public Timestamp getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(Timestamp createTime) {
-        CreateTime = createTime;
+        createTime = createTime;
+    }
+
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public Boolean getUserBasedNotificationEnabled() {
+        return userBasedNotificationEnabled;
+    }
+
+    public void setUserBasedNotificationEnabled(Boolean userBasedNotificationEnabled) {
+        userBasedNotificationEnabled = userBasedNotificationEnabled;
+    }
+
+    public Boolean getMemoryBasedNotificationEnabled() {
+        return memoryBasedNotificationEnabled;
+    }
+
+    public void setMemoryBasedNotificationEnabled(Boolean memoryBasedNotificationEnabled) {
+        memoryBasedNotificationEnabled = memoryBasedNotificationEnabled;
     }
 }
