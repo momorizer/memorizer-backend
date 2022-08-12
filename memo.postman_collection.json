@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "cfa7b435-e22d-4218-9d57-bf84b9b6eec7",
+		"name": "memo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DB",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Add user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\":\"Amit\",\n    \"lastName\":\"Singh22\",\n    \"email\":\"am2ih@yahoo.com\",\n    \"contactNo\":\"8031857945\",\n    \"password\":\"welc2ome21\",\n    \"dob\":\"1999-06-23\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ4NXQjUzI1NiI6Ik9hRURKR1FWdHpvSmQ5RkJEeThzQXhsaTRrN2VYZU85RzVTU2gyeUwtUHMiLCJ4NXQiOiIwcjFEa0l2LWM4T2xZZHNDT191eFZMdzJRem8iLCJraWQiOiJTSUdOSU5HX0tFWSIsImFsZyI6IlJTMjU2In0.eyJ1c2VyX3R6IjoiQW1lcmljYVwvQ2hpY2FnbyIsInN1YiI6IkZJTlVTRVIyMiIsInVzZXJfbG9jYWxlIjoiZW4iLCJzaWRsZSI6NDgwLCJ1c2VyLnRlbmFudC5uYW1lIjoiaWRjcy1kMDQxN2E4OWJjMmY0MWJiOGUyYTMzMDVjZjJmMTIxYSIsImlzcyI6Imh0dHBzOlwvXC9pZGVudGl0eS5vcmFjbGVjbG91ZC5jb21cLyIsInVzZXJfdGVuYW50bmFtZSI6ImlkY3MtZDA0MTdhODliYzJmNDFiYjhlMmEzMzA1Y2YyZjEyMWEiLCJjbGllbnRfaWQiOiJlcnAtc3BlY3RyYS1zZXJ2aWNlLWZwaGNoeWIyNV9BUFBJRCIsInN1Yl90eXBlIjoidXNlciIsInNjb3BlIjoiXC8iLCJjbGllbnRfdGVuYW50bmFtZSI6ImlkY3MtZDA0MTdhODliYzJmNDFiYjhlMmEzMzA1Y2YyZjEyMWEiLCJyZWdpb25fbmFtZSI6InVzLWFzaGJ1cm4tMSIsInVzZXJfbGFuZyI6ImVuIiwiZXhwIjoxNjUxMDU5NjM0LCJpYXQiOjE2NTEwNTYwMzQsImNsaWVudF9ndWlkIjoiMDI2MTJlYjkxYjhkNGU1MmJjM2UyM2I1YjJhZWEzMjMiLCJjbGllbnRfbmFtZSI6ImVycC1zcGVjdHJhLXNlcnZpY2UtZnBoY2h5YjI1IiwidGVuYW50IjoiaWRjcy1kMDQxN2E4OWJjMmY0MWJiOGUyYTMzMDVjZjJmMTIxYSIsImp0aSI6IjgxZmQwNjZjZmJjYTRjZjNhY2UzYjA4ZGFkOGJlNzY4IiwiZ3RwIjoiand0IiwidXNlcl9kaXNwbGF5bmFtZSI6IlRob21hcyBDcnV6Iiwib3BjIjp0cnVlLCJzdWJfbWFwcGluZ2F0dHIiOiJ1c2VyTmFtZSIsInByaW1UZW5hbnQiOmZhbHNlLCJ0b2tfdHlwZSI6IkFUIiwiY2FfZ3VpZCI6ImNhY2N0LWJlYmE1YjQwYzk0NDRjYTJhYjFiNGE4MzAyNDFlNDIxIiwiYXVkIjoidXJuOm9wYzpyZXNvdXJjZTpmdXNpb246ZnBoY2h5YjI1LWRjMTplcnAiLCJzdHUiOiJlcnAiLCJ1c2VyX2lkIjoiZTZlNTRmZDFiODU3NGVkMmI2MzEzMzgyN2VlNDI5ZGUiLCJ0ZW5hbnRfaXNzIjoiaHR0cHM6XC9cL2lkY3MtZDA0MTdhODliYzJmNDFiYjhlMmEzMzA1Y2YyZjEyMWEuaWRlbnRpdHkuYzlkZXYyLm9jOXFhZGV2LmNvbTo0NDMiLCJyZXNvdXJjZV9hcHBfaWQiOiIwMjYxMmViOTFiOGQ0ZTUyYmMzZTIzYjViMmFlYTMyMyJ9.Mv8xa7u7Ks5ARKkoh2RWAq7BRr5SWJ_CpV13cNjfS9virQgbp09B8NZyJOg32248VT9WwCNOCDGiI-B5kBy3Uw2CLfFEJvXnkfknCPNs22zULKIJ_cfMVhpy8FPjD9bXQ90xkyU7oKNJt4Kiu-1rnx86dH7f77PX_k3qh81nDhiGOU_0fzXWP-AbTtkNGgczQe8ik4IVmRE4gb_YVs8g1Ugouz7ydHtPoAHMNJ4qokAc2eaaDEBotglRBAB0PpIJrBHOHbJ5jWmOG6yVEM-Ubvpv3zbOR8NsxwOStMpro6_A8xY6qgrVquYYHGWkUCLkC8TsxGJVEC6Yp-eETpShmA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/vnd.oracle.adf.action+json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\":\"Akshat\",\n    \"lastName\":\"Singh\",\n    \"email\":\"akshat1@yahoo.com\",\n    \"contactNo\":\"2321857943\",\n    \"password\":\"welcome11\",\n    \"dob\":\"1999-06-16\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Memory",
+					"item": [
+						{
+							"name": "Add Memory",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"createdBy\":\"7\",\n    \"createdFor\":\"1\",\n    \"title\":\"New memory-2\",\n    \"content\":\"Hi this is a new memory\",\n    \"photo\":\"djvlnwdvn\",\n    \"privacy\":\"false\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/memory/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"memory",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Memory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/memory/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"memory",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notification",
+					"item": [
+						{
+							"name": "get all Notification",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "add notif",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n    \"userId\":{\n        \"userId\":2\n    },\n    \"content\": \"notification check one\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/notification/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"notification",
+										"add"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "group",
+					"item": [
+						{
+							"name": "create group",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "fecth all groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "member",
+					"item": [
+						{
+							"name": "add member",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "get all members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "request",
+					"item": [
+						{
+							"name": "get all requests",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "send a request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Basic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
