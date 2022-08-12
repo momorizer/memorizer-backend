@@ -38,8 +38,10 @@ public class User {
     @Column(columnDefinition = "tinyint(1) default 0")
     private boolean defaultMemoryPrivacy;
 
+    @Column(columnDefinition = "BLOB")
     private String profilePic;
 
+    @Column(columnDefinition = "BLOB")
     private String bio;
 
     @Column(columnDefinition = "tinyint(1) default 1")

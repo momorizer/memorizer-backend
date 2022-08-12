@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import javax.persistence.*;
 
 import com.example.memorizerbackend.db.user.User;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Notification {
@@ -19,10 +20,15 @@ public class Notification {
     @CreationTimestamp
     private Timestamp createTime;
 
+    @UpdateTimestamp
+    @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
+    private Timestamp updateTime;
+
     @ManyToOne
-    @JoinColumn(name = "UserId",nullable = false)
+    @JoinColumn(name = "userId",nullable = false)
     private User user;
 
+    @Column(columnDefinition = "BLOB")
     private String content;
 
     @Column(columnDefinition = "tinyint(1) default 0")
@@ -89,5 +95,13 @@ public class Notification {
 
     public void setNotificationId(Integer notificationId) {
         this.notificationId = notificationId;
+    }
+
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        updateTime = updateTime;
     }
 }

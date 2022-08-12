@@ -27,13 +27,13 @@ public class Request{
     @GeneratedValue(strategy = GenerationType.AUTO)
      private Integer requestId;
 
-      @OneToOne
-//     @JoinColumn(name="groupId" , nullable = false )
-     private Group groupId;
+     @ManyToOne
+     @JoinColumn(name="groupId" , nullable = false )
+     private Group group;
 
-      @OneToOne
-//     @JoinColumn( name="userId" , nullable=false)
-     private User userId;
+     @ManyToOne
+     @JoinColumn( name="userId" , nullable=false)
+     private User user;
 
      @CreationTimestamp
      private Timestamp createdTime;
@@ -43,8 +43,8 @@ public class Request{
     }
 
     public Request( Group GroupId, User UserId) {
-        this.groupId = GroupId;
-        this.userId = UserId;
+        this.group = GroupId;
+        this.user = UserId;
     }
 
 
@@ -58,19 +58,19 @@ public class Request{
     }
 
     public Group getGroupId() {
-        return this.groupId;
+        return this.group;
     }
 
     public void setGroupId(Group GroupId) {
-        this.groupId = GroupId;
+        this.group = GroupId;
     }
 
     public User getUserId() {
-        return this.userId;
+        return this.user;
     }
 
     public void setUserId(User UserId) {
-        this.userId = UserId;
+        this.user = UserId;
     }
 
     public Timestamp getCreatedTime() {

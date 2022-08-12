@@ -13,6 +13,7 @@ import javax.persistence.CascadeType;
 
 import com.example.memorizerbackend.db.user.User;
 import com.example.memorizerbackend.db.group.Group;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Member{
@@ -29,33 +30,34 @@ public class Member{
      private Integer memberId;
 
      @ManyToOne
-     private Group groupId;
+     @JoinColumn(name = "groupId",nullable = false)
+     private Group group;
 
-     @OneToOne
-     private User userId;
+     @ManyToOne
+     @JoinColumn(name = "userId",nullable = false)
+     private User user;
 
      @CreationTimestamp
      private Timestamp createdTime;
 
-     private boolean groupBasedNotfication;
+    @UpdateTimestamp
+    @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
+    private Timestamp updateTime;
 
-     private boolean admin;
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private boolean groupBasedNotification;
 
-    public boolean isAdmin() {
-        return admin;
-    }
+    @Column(columnDefinition = "tinyint(1) default 0")
+    private boolean isAdmin;
 
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
 
     //default constructor
     public Member() {
     }
 
     public Member(Group groupId, User userId) {
-        this.groupId = groupId;
-        this.userId = userId;
+        this.group = groupId;
+        this.user = userId;
     }
 
     public Integer getMemberId() {
@@ -67,19 +69,19 @@ public class Member{
     }
 
     public Group getGroupId() {
-        return this.groupId;
+        return this.group;
     }
 
     public void setGroupId(Group GroupId) {
-        this.groupId = GroupId;
+        this.group = GroupId;
     }
 
     public User getUserId() {
-        return this.userId;
+        return this.user;
     }
 
     public void setUserId(User UserId) {
-        this.userId = UserId;
+        this.user = UserId;
     }
 
     public Timestamp getCreatedTime() {
@@ -90,12 +92,28 @@ public class Member{
         this.createdTime = CreatedTime;
     }
 
-	public boolean isGroupBasedNotfication() {
-		return this.groupBasedNotfication;
+    public Timestamp getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        updateTime = updateTime;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean admin) {
+        this.isAdmin = admin;
+    }
+
+    public boolean isGroupBasedNotification() {
+		return this.groupBasedNotification;
 	}
 
-	public void setGroupBasedNotfication(boolean GroupBasedNotfication) {
-		this.groupBasedNotfication = GroupBasedNotfication;
+	public void setGroupBasedNotification(boolean GroupBasedNotfication) {
+		this.groupBasedNotification = GroupBasedNotfication;
 	}
 
 }

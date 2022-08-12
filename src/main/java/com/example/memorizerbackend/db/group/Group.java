@@ -35,27 +35,16 @@ public class Group {
 	@Column(columnDefinition = "BLOB")
     private String groupDescription;
 
-	// @Column(columnDefinition = "datetime")
 	@CreationTimestamp
     private Timestamp createdTime;
 
-	// @Column(columnDefinition = "datetime")
 	@UpdateTimestamp
+	@Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp updatedTime;
 
 	@ManyToOne
+	@JoinColumn(name = "UserId",nullable = false)
 	private User superAdmin;
-	// @OneToOne
-	// @JoinColumn( name="UserId" , nullable=false)
-	// private User SuperAdminId;
-
-	public User getSuperAdmin() {
-		return superAdmin;
-	}
-
-	public void setSuperAdmin(User superAdmin) {
-		this.superAdmin = superAdmin;
-	}
 
 	@Column(columnDefinition = "BLOB")
 	private String groupIcon;
@@ -63,9 +52,6 @@ public class Group {
 	//default constructor
 	public Group() {
 	}
-//	public Group(String groupName) {
-//		this.groupName = groupName;
-//	}
 
 	public Group(String groupName, User superAdmin) {
 		this.groupName = groupName;
@@ -94,6 +80,14 @@ public class Group {
 
 	public void setGroupDescription(String GroupDescription) {
 		this.groupDescription = GroupDescription;
+	}
+
+	public User getSuperAdmin() {
+		return superAdmin;
+	}
+
+	public void setSuperAdmin(User superAdmin) {
+		this.superAdmin = superAdmin;
 	}
 
 	public Timestamp getCreatedTime() {

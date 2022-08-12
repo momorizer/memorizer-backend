@@ -26,8 +26,10 @@ public class Memory {
     @Column(nullable = false)
     private String title;
 
+    @Column(columnDefinition = "BLOB")
     private String content;
 
+    @Column(columnDefinition = "BLOB")
     private String photo;
 
     @Column(columnDefinition = "tinyint(1) default 0")
@@ -37,6 +39,7 @@ public class Memory {
     private Timestamp createTime;
 
     @UpdateTimestamp
+    @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
     private Timestamp updateTime;
 
     //Default constructor
