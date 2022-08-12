@@ -20,7 +20,7 @@ public class Notification {
     private Timestamp createTime;
 
     @ManyToOne
-    @JoinColumn(name = "UserId")
+    @JoinColumn(name = "UserId",nullable = false)
     private User user;
 
     private String content;

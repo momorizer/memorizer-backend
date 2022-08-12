@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
 
 import javax.persistence.*;
+import javax.websocket.OnClose;
 
 import com.example.memorizerbackend.db.user.User;
 

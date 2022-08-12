@@ -10,16 +10,16 @@ public class NotificationController {
 
     @Autowired
 
-    private NotificationRepository dNotificationRespository;
+    private NotificationRepository NotificationRespository;
 
     @PostMapping(path = "/add")
     public @ResponseBody String addNewNotification(@RequestBody Notification notification){
-        dNotificationRespository.save(notification);
+        NotificationRespository.save(notification);
         return "Notification Saved";
     }
 
     @GetMapping(path = "/all")
     public @ResponseBody Iterable <Notification> getAllNotification(){
-        return dNotificationRespository.findAll();
+        return NotificationRespository.findAll();
     }
 }
