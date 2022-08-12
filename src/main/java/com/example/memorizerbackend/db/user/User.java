@@ -17,10 +17,6 @@ public class User {
     @Column(nullable = false,unique = true)
     private Integer userId;
 
-//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-//    private ContactDetail contactDetail;
-
-    //TODO: Add foreign keys
     @Column(nullable = false)
     private String firstName;
 
@@ -46,27 +42,23 @@ public class User {
 
     private String bio;
 
-    // @OneToMany
-    // private List<Group> groups;
+    @Column(columnDefinition = "tinyint(1) default 1")
+    private Boolean userBasedNotificationEnabled;
 
     @Column(columnDefinition = "tinyint(1) default 1")
-    private Boolean UserBasedNotificationEnabled;
-
-    @Column(columnDefinition = "tinyint(1) default 1")
-    private Boolean MemoryBasedNotificationEnabled;
+    private Boolean memoryBasedNotificationEnabled;
 
 
     @CreationTimestamp
-    private Timestamp CreateTime;
+    private Timestamp createTime;
 
     @UpdateTimestamp
     @Column(columnDefinition = "TIMESTAMP DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP")
-    private Timestamp UpdateTime;
+    private Timestamp updateTime;
 
-//    @ColumnDefault("")
+    //TODO: Resolve default dob issue
     @JsonFormat(pattern = "yyyy-MM-dd")
-    //TODO: Resolve defualt dob issue
-    private Date Dob;
+    private Date dob;
 
     public User(String FirstName, String LastName, String Email, String ContactNo, String Password) {
         this.firstName = FirstName;
@@ -144,11 +136,11 @@ public class User {
     }
 
     public Date getDob() {
-        return Dob;
+        return dob;
     }
 
     public void setDob(Date dob) {
-        Dob = dob;
+        dob = dob;
     }
 
     public String getPassword() {
@@ -160,19 +152,19 @@ public class User {
     }
 
     public Timestamp getUpdateTime() {
-        return UpdateTime;
+        return updateTime;
     }
 
     public void setUpdateTime(Timestamp updateTime) {
-        UpdateTime = updateTime;
+        updateTime = updateTime;
     }
 
     public Timestamp getCreateTime() {
-        return CreateTime;
+        return createTime;
     }
 
     public void setCreateTime(Timestamp createTime) {
-        CreateTime = createTime;
+        createTime = createTime;
     }
 
 
@@ -185,18 +177,18 @@ public class User {
     }
 
     public Boolean getUserBasedNotificationEnabled() {
-        return UserBasedNotificationEnabled;
+        return userBasedNotificationEnabled;
     }
 
     public void setUserBasedNotificationEnabled(Boolean userBasedNotificationEnabled) {
-        UserBasedNotificationEnabled = userBasedNotificationEnabled;
+        userBasedNotificationEnabled = userBasedNotificationEnabled;
     }
 
     public Boolean getMemoryBasedNotificationEnabled() {
-        return MemoryBasedNotificationEnabled;
+        return memoryBasedNotificationEnabled;
     }
 
     public void setMemoryBasedNotificationEnabled(Boolean memoryBasedNotificationEnabled) {
-        MemoryBasedNotificationEnabled = memoryBasedNotificationEnabled;
+        memoryBasedNotificationEnabled = memoryBasedNotificationEnabled;
     }
 }
